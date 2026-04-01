@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Boxercise Trainer — サポート / Support</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  min-height: 100vh;
+  line-height: 1.7;
+}
+
+.lang-bar {
+  background: #111;
+  border-bottom: 1px solid #222;
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 20px;
+  gap: 6px;
+}
+.lang-btn {
+  background: none;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #888;
+  font-size: 0.85rem;
+  padding: 5px 14px;
+  cursor: pointer;
+}
+.lang-btn.active { background: #e63946; border-color: #e63946; color: #fff; }
+
+header {
+  padding: 40px 20px 28px;
+  text-align: center;
+  border-bottom: 1px solid #1a1a1a;
+  background: #0f0f0f;
+}
+.logo { font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; color: #f0f0f0; }
+.logo span { color: #e63946; }
+.header-sub { font-size: 0.75rem; letter-spacing: 4px; color: #555; margin-top: 8px; text-transform: uppercase; }
+
+.container { max-width: 700px; margin: 0 auto; padding: 40px 20px 80px; }
+.section { margin-bottom: 44px; }
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #ffd60a;
+  text-transform: uppercase;
+  border-left: 3px solid #e63946;
+  padding-left: 12px;
+  margin-bottom: 18px;
+}
+
+.mode-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+@media(max-width:480px){ .mode-grid { grid-template-columns: 1fr; } }
+.mode-card { background: #111; border: 1px solid #222; border-radius: 10px; padding: 18px 14px; text-align: center; }
+.mode-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.mode-name { font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; color: #ffd60a; margin-bottom: 6px; text-transform: uppercase; }
+.mode-desc { font-size: 0.78rem; color: #777; line-height: 1.6; }
+
+.step-list { list-style: none; }
+.step-list li { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid #181818; font-size: 0.87rem; color: #bbb; }
+.step-list li:last-child { border-bottom: none; }
+.step-num { font-weight: 700; color: #e63946; flex-shrink: 0; width: 24px; padding-top: 1px; }
+
+.note { background: #111; border-left: 3px solid #333; border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 0.8rem; color: #777; margin-top: 12px; line-height: 1.7; }
+
+.badge-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: #bbb;
+  text-decoration: none;
+}
+.badge:hover { border-color: #e63946; color: #fff; }
+
+.faq-item { border: 1px solid #1e1e1e; border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+.faq-q { padding: 15px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #111; user-select: none; gap: 12px; }
+.faq-q:hover { background: #141414; }
+.faq-q-text { font-weight: 600; font-size: 0.88rem; color: #f0f0f0; }
+.faq-icon { font-size: 1.2rem; color: #e63946; flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 14px 16px 16px; background: #0d0d0d; font-size: 0.85rem; color: #999; border-top: 1px solid #1e1e1e; line-height: 1.8; }
+.faq-item.open .faq-a { display: block; }
+
+.contact-box { background: #111; border: 1px solid #222; border-radius: 12px; padding: 26px 20px; text-align: center; }
+.contact-box p { color: #999; font-size: 0.88rem; margin-bottom: 16px; }
+.contact-link { display: inline-block; background: #e63946; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; padding: 12px 26px; border-radius: 8px; }
+.contact-link:hover { background: #ff4757; }
+
+footer { border-top: 1px solid #1a1a1a; padding: 24px; text-align: center; color: #444; font-size: 0.75rem; letter-spacing: 1px; }
+footer a { color: #555; text-decoration: none; }
+footer a:hover { color: #ffd60a; }
+
+.content { display: none; }
+.content.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ja')">🇯🇵 日本語</button>
+  <button class="lang-btn" onclick="setLang('en')">🇺🇸 English</button>
+</div>
+
+<header>
+  <div class="logo">My <span>Boxercise</span> Trainer</div>
+  <div class="header-sub" id="headerSub">サポートページ</div>
+</header>
+
+<!-- ======== 日本語 ======== -->
+<div id="content-ja" class="content active">
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">📦 3つのモード</div>
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-icon">🪢</div>
+        <div class="mode-name">ROPE</div>
+        <div class="mode-desc">縄跳びモード。BPMに合わせてメトロノームがリズムをキープします。</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">👟</div>
+        <div class="mode-name">STEP</div>
+        <div class="mode-desc">フットワーク練習。前後左右・ダッキング・ウィービングを自動コール。</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">🥊</div>
+        <div class="mode-name">SHADOW</div>
+        <div class="mode-desc">シャドーボクシング。パンチコンビネーションとステップを組み合わせてコール。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🚀 基本的な使い方</div>
+    <ul class="step-list">
+      <li><span class="step-num">01</span><span>モード・スタンス（右利き / 左利き）・ラウンド時間・ラウンド数を選択します。</span></li>
+      <li><span class="step-num">02</span><span>BPMスライダーまたは ＋／－ ボタンでテンポを設定します（80〜240 BPM）。</span></li>
+      <li><span class="step-num">03</span><span>端末の音量を上げ、音声コールをオンにします。</span></li>
+      <li><span class="step-num">04</span><span>▶ START でトレーニング開始。ラウンド終了後は自動でインターバルに入ります。</span></li>
+      <li><span class="step-num">05</span><span>■ STOP で中断、↺ でリセットできます。</span></li>
+    </ul>
+    <div class="note">💡 トレーニング中はアプリが画面スリープを自動でブロックします。端末のバッテリー最適化設定によっては解除される場合があります。</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📲 ダウンロード</div>
+    <div class="badge-row">
+      <a href="#" class="badge">🤖 Google Play (Android)</a>
+      <a href="#" class="badge">🍎 App Store (iOS)</a>
+    </div>
+    <div class="note">動作確認済み環境：Android 10以上 / iOS 14以上</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">❓ よくある質問</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">音声コールが出ません</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">端末のメディア音量がミュートになっていないか確認してください。マナーモード・サイレントモードでも音が出なくなる場合があります。Bluetoothイヤホンやスピーカーに接続している場合は、そちらから音が出ていることがあります。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">シャドーモードでパンチコールのタイミングがずれる</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">コールのタイミングはBPMと連動しています。BPMが高すぎると音声の読み上げが追いつかない場合があります。120〜160 BPM での使用を推奨します。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">同じ方向にステップが連続することがある</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">アプリは内部で位置カウンターを管理しており、同方向への連続移動を抑制しています。ただし「バック×2 → フロント」のような意図的なコンビネーションは出力されます。実際のボクシングトレーニングで使われるフットワークパターンです。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">右利き・左利きの設定の違いは？</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">右利き（オーソドックス）は左手がジャブ・右手がストレートのスタンスです。左利き（サウスポー）に設定すると、フック・ボディなどの左右表記が反転し、サウスポースタンスに合ったコールになります。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">STOPするとラウンドがリセットされる？</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">はい。■ STOP または ↺ を押すとセッション全体がリセットされ、ラウンド1に戻ります。途中再開は現バージョンでは未対応です。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">トレーニング中に画面がスリープしてしまう</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">アプリはトレーニング中に画面スリープを自動でブロックします。それでも発生する場合は、端末の「バッテリー最適化」設定でこのアプリを除外してください（設定 → バッテリー → バッテリー最適化）。</div>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <div class="section-title">✉️ お問い合わせ</div>
+    <div class="contact-box">
+      <p>バグの報告・機能のご要望・その他のご質問はメールにてご連絡ください。</p>
+      <a href="mailto:support@example.com" class="contact-link">📧 メールで問い合わせる</a>
+      <div class="note" style="margin-top:16px; text-align:left;">個人開発アプリのため、返信にお時間をいただく場合があります。ご了承ください。</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ======== ENGLISH ======== -->
+<div id="content-en" class="content">
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">📦 Three Modes</div>
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-icon">🪢</div>
+        <div class="mode-name">ROPE</div>
+        <div class="mode-desc">Jump rope mode. A metronome keeps your rhythm at your chosen BPM.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">👟</div>
+        <div class="mode-name">STEP</div>
+        <div class="mode-desc">Footwork drill. Auto-calls front/back/side steps, ducks, and weaves.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">🥊</div>
+        <div class="mode-name">SHADOW</div>
+        <div class="mode-desc">Shadow boxing. Combines punch combinations with footwork calls.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🚀 How to Use</div>
+    <ul class="step-list">
+      <li><span class="step-num">01</span><span>Select your mode, stance (orthodox / southpaw), round duration, and number of rounds.</span></li>
+      <li><span class="step-num">02</span><span>Set your tempo with the BPM slider or ＋ / － buttons (80–240 BPM).</span></li>
+      <li><span class="step-num">03</span><span>Turn up your device volume and enable voice calls.</span></li>
+      <li><span class="step-num">04</span><span>Press ▶ START to begin. A rest interval starts automatically after each round.</span></li>
+      <li><span class="step-num">05</span><span>Use ■ STOP to pause or ↺ to fully reset the session.</span></li>
+    </ul>
+    <div class="note">💡 The app automatically prevents your screen from sleeping during training. If it still turns off, exclude this app from battery optimization in your device settings.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📲 Download</div>
+    <div class="badge-row">
+      <a href="#" class="badge">🤖 Google Play (Android)</a>
+      <a href="#" class="badge">🍎 App Store (iOS)</a>
+    </div>
+    <div class="note">Requires Android 10+ / iOS 14+</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">❓ FAQ</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">No voice calls are coming out</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">Check that your device's media volume is not muted. Silent or Do Not Disturb mode may also suppress audio. If connected to Bluetooth headphones or a speaker, audio may be routing there instead.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Punch call timing feels off in Shadow mode</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">Call timing is synced to BPM. If the BPM is too high, the text-to-speech engine may not keep up. We recommend staying in the 120–160 BPM range.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">I occasionally get two steps in the same direction</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">The app tracks your position and suppresses consecutive same-direction steps. However, intentional patterns like double-back → front are by design — this mirrors real boxing footwork training.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">What's the difference between Orthodox and Southpaw?</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">Orthodox means your left hand leads (jab) and your right hand throws the straight. Southpaw flips this. Selecting Southpaw also reverses the left/right labeling for hooks, body shots, and uppercuts.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Does STOP reset my round count?</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">Yes. Pressing ■ STOP or ↺ resets the entire session back to Round 1. Mid-session resume is not supported in the current version.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">My screen keeps turning off during training</span>
+        <span class="faq-icon">＋</span>
+      </div>
+      <div class="faq-a">The app automatically blocks the screen from sleeping during a session. If it still turns off, go to Settings → Battery → Battery Optimization and exclude this app.</div>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <div class="section-title">✉️ Contact</div>
+    <div class="contact-box">
+      <p>For bug reports, feature requests, or general questions, please reach out by email.</p>
+      <a href="mailto:support@example.com" class="contact-link">📧 Send a message</a>
+      <div class="note" style="margin-top:16px; text-align:left;">This is an indie app maintained by a solo developer. Response times may vary — thank you for your patience.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <div style="margin-bottom:6px;">© 2025 My Boxercise Trainer — All rights reserved</div>
+  <div><a href="#">プライバシーポリシー</a> &nbsp;/&nbsp; <a href="#">Privacy Policy</a></div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.getElementById('content-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent.indexOf(lang === 'ja' ? '日本語' : 'English') !== -1);
+  });
+  document.getElementById('headerSub').textContent = lang === 'ja' ? 'サポートページ' : 'Support';
+  document.documentElement.lang = lang;
+}
+
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

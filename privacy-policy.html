@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — takaosan.app</title>
+  <meta name="description" content="Privacy Policy for apps by takaosan.app">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #555;
+      --color-text-tertiary: #999;
+      --color-bg: #fff;
+      --color-bg-secondary: #f7f7f5;
+      --color-bg-tertiary: #f0efe9;
+      --color-border: rgba(0,0,0,0.1);
+      --color-border-hover: rgba(0,0,0,0.2);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-text-primary: #e8e8e6;
+        --color-text-secondary: #aaa;
+        --color-text-tertiary: #666;
+        --color-bg: #111;
+        --color-bg-secondary: #1a1a1a;
+        --color-bg-tertiary: #222;
+        --color-border: rgba(255,255,255,0.1);
+        --color-border-hover: rgba(255,255,255,0.2);
+      }
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 0.5px solid var(--color-border);
+      margin-bottom: 4rem;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+    .logo span {
+      font-style: italic;
+      color: var(--color-text-secondary);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    nav a:hover { color: var(--color-text-primary); }
+
+    .lang-switch {
+      display: flex;
+      border: 0.5px solid var(--color-border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--color-text-tertiary);
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 4rem;
+    }
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-text-secondary);
+    }
+    .hero-meta {
+      font-size: 13px;
+      color: var(--color-text-tertiary);
+    }
+    .hero-meta span { margin: 0 8px; opacity: 0.4; }
+
+    .divider {
+      height: 0.5px;
+      background: var(--color-border);
+      margin: 3rem 0;
+    }
+
+    /* ── CONTENT ── */
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+
+    .section {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 0.5px solid var(--color-border);
+    }
+    .section:first-child { padding-top: 0; }
+    .section:last-child  { border-bottom: none; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      padding-top: 4px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      letter-spacing: -0.2px;
+      color: var(--color-text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-body p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+
+    .policy-list {
+      list-style: none;
+      margin: 0.75rem 0;
+      border: 0.5px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .policy-list li {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+      padding: 10px 14px;
+      border-bottom: 0.5px solid var(--color-border);
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+    .policy-list li:last-child { border-bottom: none; }
+    .policy-list li::before {
+      content: '—';
+      color: var(--color-text-tertiary);
+      flex-shrink: 0;
+      font-size: 11px;
+    }
+
+    .note-box {
+      background: var(--color-bg-secondary);
+      border: 0.5px solid var(--color-border);
+      border-left: 2px solid var(--color-text-tertiary);
+      border-radius: 4px;
+      padding: 12px 16px;
+      margin-top: 0.75rem;
+    }
+    .note-box p {
+      font-size: 13px !important;
+      color: var(--color-text-tertiary) !important;
+      margin: 0 !important;
+    }
+
+    .contact-block {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 16px;
+      border: 0.5px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-bg-secondary);
+      margin-top: 0.75rem;
+      transition: border-color 0.2s;
+    }
+    .contact-block:hover { border-color: var(--color-border-hover); }
+    .contact-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+    .contact-block a {
+      font-size: 13px;
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+    .contact-block a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-top: 0.5px solid var(--color-border);
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
+    footer a {
+      color: var(--color-text-tertiary);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--color-text-primary); }
+
+    @media (max-width: 600px) {
+      .section { grid-template-columns: 1fr; gap: 0.75rem; }
+      .hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <nav>
+      <a href="/" class="logo">takaosan<span>.app</span></a>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button class="lang-btn active" onclick="setLang('ja')" id="btn-ja">JA</button>
+          <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+        </div>
+        <a href="mailto:takao35.project@gmail.com">contact</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-label">Legal</div>
+      <h1>Privacy <em>Policy</em></h1>
+      <div class="hero-meta">
+        takaosan.app <span>·</span> <span id="updated-date"></span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ══ JAPANESE ══ -->
+    <div class="lang-section active" id="lang-ja">
+
+      <div class="section">
+        <div class="section-label">はじめに</div>
+        <div class="section-body">
+          <div class="section-title">プライバシーポリシー</div>
+          <p>本プライバシーポリシーは、takaosan.app（以下「当方」）が提供するアプリにおける個人情報の取り扱いについて説明します。本アプリをご利用になることで、本ポリシーに同意したものとみなされます。</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">01 · 収集する情報</div>
+        <div class="section-body">
+          <div class="section-title">収集する情報</div>
+          <p>本アプリは、ユーザーから直接個人情報を収集しません。ただし、広告配信のため Google AdMob を利用しており、以下の情報が自動的に収集される場合があります。</p>
+          <ul class="policy-list">
+            <li>広告識別子（Android 広告ID）</li>
+            <li>デバイスの種類・OSバージョン</li>
+            <li>アプリの使用状況に関する統計情報</li>
+            <li>おおよその位置情報（国・地域レベル）</li>
+          </ul>
+          <div class="note-box">
+            <p>氏名・メールアドレス・電話番号などの個人を特定できる情報は収集・保存しません。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">02 · 使用目的</div>
+        <div class="section-body">
+          <div class="section-title">情報の使用目的</div>
+          <p>収集された情報は以下の目的にのみ使用されます。</p>
+          <ul class="policy-list">
+            <li>パーソナライズされた広告の配信</li>
+            <li>アプリのパフォーマンス改善</li>
+            <li>利用統計の分析</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">03 · 第三者提供</div>
+        <div class="section-body">
+          <div class="section-title">第三者への情報提供</div>
+          <p>当方は以下のサードパーティサービスを利用しています。各サービスは独自のプライバシーポリシーに基づいてデータを処理します。</p>
+          <ul class="policy-list">
+            <li>Google AdMob（広告配信）— <a href="https://policies.google.com/privacy" style="color:var(--color-text-primary)">Google プライバシーポリシー</a></li>
+            <li>Google Analytics for Firebase（利用状況分析）</li>
+          </ul>
+          <p>法令に基づく開示要求がある場合を除き、個人情報を第三者に販売・貸与することはありません。</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">04 · 広告管理</div>
+        <div class="section-body">
+          <div class="section-title">広告とトラッキングの管理</div>
+          <p>パーソナライズ広告のオプトアウトは、デバイスの設定から行えます。</p>
+          <ul class="policy-list">
+            <li>Android：設定 → Google → 広告 →「広告のパーソナライズをオプトアウト」</li>
+          </ul>
+          <div class="note-box">
+            <p>オプトアウト後も広告は表示されますが、行動に基づかない広告が配信されます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">05 · 子ども</div>
+        <div class="section-body">
+          <div class="section-title">子どものプライバシー</div>
+          <p>本アプリは13歳未満の児童を対象としておらず、意図的に13歳未満の児童から個人情報を収集することはありません。</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">06 · 変更</div>
+        <div class="section-body">
+          <div class="section-title">ポリシーの変更</div>
+          <p>本ポリシーは予告なく変更される場合があります。変更後のポリシーは本ページに掲載された時点で効力を生じます。定期的にご確認ください。</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">07 · お問い合わせ</div>
+        <div class="section-body">
+          <div class="section-title">お問い合わせ</div>
+          <p>本ポリシーに関するご質問は以下よりお問い合わせください。</p>
+          <div class="contact-block">
+            <div class="contact-label">Email</div>
+            <a href="mailto:takao35.project@gmail.com">takao35.project@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lang-ja -->
+
+    <!-- ══ ENGLISH ══ -->
+    <div class="lang-section" id="lang-en">
+
+      <div class="section">
+        <div class="section-label">Introduction</div>
+        <div class="section-body">
+          <div class="section-title">Privacy Policy</div>
+          <p>This Privacy Policy describes how takaosan.app ("we", "us", or "our") handles information in connection with our applications. By using our apps, you agree to the practices described in this policy.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">01 · Information</div>
+        <div class="section-body">
+          <div class="section-title">Information We Collect</div>
+          <p>Our apps do not collect personally identifiable information directly from users. However, we use Google AdMob for advertising, which may automatically collect the following:</p>
+          <ul class="policy-list">
+            <li>Advertising identifier (Android Advertising ID)</li>
+            <li>Device type and OS version</li>
+            <li>App usage statistics</li>
+            <li>Approximate location (country/region level)</li>
+          </ul>
+          <div class="note-box">
+            <p>We do not collect or store personally identifiable information such as your name, email address, or phone number.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">02 · Usage</div>
+        <div class="section-body">
+          <div class="section-title">How We Use Information</div>
+          <p>The information collected is used solely for the following purposes:</p>
+          <ul class="policy-list">
+            <li>Delivering personalized advertisements</li>
+            <li>Improving app performance</li>
+            <li>Analyzing usage statistics</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">03 · Third Parties</div>
+        <div class="section-body">
+          <div class="section-title">Third-Party Services</div>
+          <p>We use the following third-party services, each of which processes data under their own privacy policies:</p>
+          <ul class="policy-list">
+            <li>Google AdMob (advertising) — <a href="https://policies.google.com/privacy" style="color:var(--color-text-primary)">Google Privacy Policy</a></li>
+            <li>Google Analytics for Firebase (usage analytics)</li>
+          </ul>
+          <p>We do not sell or share personal information with third parties, except as required by law.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">04 · Opt-Out</div>
+        <div class="section-body">
+          <div class="section-title">Advertising &amp; Opt-Out</div>
+          <p>You can opt out of personalized advertising through your device settings:</p>
+          <ul class="policy-list">
+            <li>Android: Settings → Google → Ads → "Opt out of Ads Personalization"</li>
+          </ul>
+          <div class="note-box">
+            <p>Opting out does not stop ads from being shown; ads will no longer be based on your behavior.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">05 · Children</div>
+        <div class="section-body">
+          <div class="section-title">Children's Privacy</div>
+          <p>Our apps are not directed at children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">06 · Changes</div>
+        <div class="section-body">
+          <div class="section-title">Changes to This Policy</div>
+          <p>We may update this Privacy Policy from time to time. Changes will be effective when posted on this page. We encourage you to review this page periodically.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">07 · Contact</div>
+        <div class="section-body">
+          <div class="section-title">Contact Us</div>
+          <p>If you have any questions about this Privacy Policy, please contact us:</p>
+          <div class="contact-block">
+            <div class="contact-label">Email</div>
+            <a href="mailto:takao35.project@gmail.com">takao35.project@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lang-en -->
+
+    <footer>
+      <a href="/">takaosan.app</a>
+      <span>© 2025</span>
+    </footer>
+
+  </div><!-- /page -->
+
+  <script>
+    const d = new Date();
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.getElementById('updated-date').textContent =
+      `Updated ${months[d.getMonth()]} ${d.getFullYear()}`;
+
+    function setLang(lang) {
+      document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+    }
+  </script>
+</body>
+</html>
