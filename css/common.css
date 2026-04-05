@@ -1,0 +1,94 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555;
+  --color-text-tertiary: #999;
+  --color-bg: #fff;
+  --color-bg-secondary: #f7f7f5;
+  --color-bg-tertiary: #f0efe9;
+  --color-border: rgba(0,0,0,0.1);
+  --color-border-hover: rgba(0,0,0,0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #e8e8e6;
+    --color-text-secondary: #aaa;
+    --color-text-tertiary: #666;
+    --color-bg: #111;
+    --color-bg-secondary: #1a1a1a;
+    --color-bg-tertiary: #222;
+    --color-border: rgba(255,255,255,0.1);
+    --color-border-hover: rgba(255,255,255,0.2);
+  }
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 0.5px solid var(--color-border);
+  margin-bottom: 4rem;
+}
+
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.logo span {
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+nav a {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+nav a:hover { color: var(--color-text-primary); }
+
+.hero-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.divider {
+  height: 0.5px;
+  background: var(--color-border);
+  margin: 4rem 0;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-top: 0.5px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 2rem;
+}
